@@ -1,12 +1,8 @@
-#grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 10px;
-    padding: 10px; 
-}
 
-#grid-container div {
-    background-color: rgba(255, 100, 255, 0.8);
+#grid-container {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 10px;
     text-align: center;
     padding: 20px 0;
     font-size: 30px;
