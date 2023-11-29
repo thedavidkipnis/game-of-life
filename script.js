@@ -2,7 +2,7 @@ var grid = [];
 
 function main() {
     genGrid(3,3);
-    setInterval(switchGrid, 500);
+    //setInterval(switchGrid, 500);
 }
 
 function genGrid(rows, cols) {
@@ -17,8 +17,11 @@ function genGrid(rows, cols) {
         var gridRow = [];
         for (var j = 0; j < Math.floor(screenWidth/35); j++) {
             var cell = document.createElement("div");
-
             cell.className = "grid-cell-filled";
+
+            cell.onclick = function(cellElement) {
+                changeCellState(cellElement.currentTarget);
+            }
 
             row.appendChild(cell);
 
@@ -31,7 +34,6 @@ function genGrid(rows, cols) {
 }
 
 function switchGrid() {
-    console.log("heyyy");
     grid.forEach(row => {
         row.forEach(cell => {
             if(Math.floor(Math.random() * 2) == 1) {
@@ -41,4 +43,15 @@ function switchGrid() {
             }
         })
     });
+}
+
+function changeCellState(cell) {
+    switch (cell.className) {
+        case "grid-cell-unfilled":
+            cell.className = "grid-cell-filled";
+            break;
+        default:
+            cell.className = "grid-cell-unfilled";
+            break;
+    }
 }
