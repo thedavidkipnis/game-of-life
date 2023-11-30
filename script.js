@@ -6,6 +6,7 @@ function main() {
     //setInterval(switchGrid, 500);
 }
 
+// generates grid divs and populates grid array
 function genGrid(rows, cols) {
 
     let screenHeight = screen.height;
@@ -35,18 +36,7 @@ function genGrid(rows, cols) {
     }
 }
 
-function switchGrid() {
-    grid.forEach(row => {
-        row.forEach(cell => {
-            if(Math.floor(Math.random() * 2) == 1) {
-                cell.className = "dead-cell";
-            } else {
-                cell.className = "live-cell";
-            }
-        })
-    });
-}
-
+// switches a cell's state to the alternative state
 function toggleCellState(cell) {
     switch (cell.className) {
         case "dead-cell":
@@ -59,4 +49,47 @@ function toggleCellState(cell) {
             break;
     }
     console.log(liveCells);
+}
+
+// randomizes each cell's state on the grid
+function randomizeGrid() {
+    grid.forEach(row => {
+        row.forEach(cell => {
+            if(Math.floor(Math.random() * 2) == 1) {
+                cell.className = "dead-cell";
+            } else {
+                cell.className = "live-cell";
+            }
+        })
+    });
+}
+
+// updates grid to the next state
+function updateFrame() {
+    grid.forEach(cell => {
+        let liveNeighbors = getNeighbors(cell);
+
+        if(cell.className == "dead-cell" && liveNeighbors == 3) {
+            toggleCellState(cell);
+            liveCells.add(cell.id);
+        } else if(cell.className == "live-cell") {
+            // TODO: implement the following for live cells
+            // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+            // Any live cell with two or three live neighbours lives on to the next generation.
+            // Any live cell with more than three live neighbours dies, as if by overpopulation.
+        }
+    });
+}
+
+// helper function for getting the neighbors surrounding a cell
+function getNeighbors(cell) {
+    let split = cell.id.split(".");
+    let x = parseInt(split[0]);
+    let y = parseInt(split[1]);
+
+    let neighbors = 0;
+
+    // TODO: check all neighbors and add to counts
+
+    return neighbors;
 }
