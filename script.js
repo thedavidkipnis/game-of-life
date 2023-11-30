@@ -1,4 +1,5 @@
 var grid = [];
+var liveCells = new Set();
 
 function main() {
     genGrid(3,3);
@@ -16,11 +17,12 @@ function genGrid(rows, cols) {
 
         var gridRow = [];
         for (var j = 0; j < Math.floor(screenWidth/35); j++) {
-            var cell = document.createElement("div");
-            cell.className = "grid-cell-filled";
 
+            var cell = document.createElement("div");
+            cell.className = "dead-cell";
+            cell.id = i + "." + j;
             cell.onclick = function(cellElement) {
-                changeCellState(cellElement.currentTarget);
+                toggleCellState(cellElement.currentTarget);
             }
 
             row.appendChild(cell);
@@ -37,21 +39,24 @@ function switchGrid() {
     grid.forEach(row => {
         row.forEach(cell => {
             if(Math.floor(Math.random() * 2) == 1) {
-                cell.className = "grid-cell-unfilled";
+                cell.className = "dead-cell";
             } else {
-                cell.className = "grid-cell-filled";
+                cell.className = "live-cell";
             }
         })
     });
 }
 
-function changeCellState(cell) {
+function toggleCellState(cell) {
     switch (cell.className) {
-        case "grid-cell-unfilled":
-            cell.className = "grid-cell-filled";
+        case "dead-cell":
+            cell.className = "live-cell";
+            liveCells.add(cell.id);
             break;
         default:
-            cell.className = "grid-cell-unfilled";
+            cell.className = "dead-cell";
+            liveCells.delete(cell.id);
             break;
     }
+    console.log(liveCells);
 }
