@@ -2,6 +2,7 @@ var grid = [];
 var liveCells = new Set();
 
 var gridActive = false;
+var runningIntervalID;
 
 function main() {
     genGrid(3,3);
@@ -67,11 +68,11 @@ function randomizeGrid() {
 // function that starts and stops the grid's refreshing
 function runGrid() {
     if(!gridActive) {
-        setInterval(updateFrame, 1000);
+        runningIntervalID = setInterval(updateFrame, 1000);
         gridActive = true;
         return;
     }
-    clearInterval(updateFrame);
+    clearInterval(runningIntervalID);
     gridActive = false;
 }
 
