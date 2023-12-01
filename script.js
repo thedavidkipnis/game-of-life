@@ -1,9 +1,10 @@
 var grid = [];
 var liveCells = new Set();
 
+var gridActive = false;
+
 function main() {
     genGrid(3,3);
-    //setInterval(switchGrid, 500);
 }
 
 // generates grid divs and populates grid array
@@ -48,7 +49,6 @@ function toggleCellState(cell) {
             liveCells.delete(cell.id);
             break;
     }
-    console.log(liveCells);
 }
 
 // randomizes each cell's state on the grid
@@ -64,32 +64,73 @@ function randomizeGrid() {
     });
 }
 
+// function that starts and stops the grid's refreshing
+function runGrid() {
+    if(!gridActive) {
+        setInterval(updateFrame, 1000);
+        gridActive = true;
+        return;
+    }
+    clearInterval(updateFrame);
+    gridActive = false;
+}
+
 // updates grid to the next state
 function updateFrame() {
-    grid.forEach(cell => {
-        let liveNeighbors = getNeighbors(cell);
+    let toChange = new Set();
+    grid.forEach(row => {
+        row.forEach(cell => {
+            
+            let liveNeighbors = getNeighbors(cell);
 
-        if(cell.className == "dead-cell" && liveNeighbors == 3) {
-            toggleCellState(cell);
-            liveCells.add(cell.id);
-        } else if(cell.className == "live-cell") {
-            // TODO: implement the following for live cells
-            // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-            // Any live cell with two or three live neighbours lives on to the next generation.
-            // Any live cell with more than three live neighbours dies, as if by overpopulation.
-        }
+            if(cell.className == "dead-cell" && liveNeighbors == 3) {
+                toChange.add(cell.id);
+            } else if(cell.className == "live-cell" && (liveNeighbors < 2 || liveNeighbors > 3)) {
+                toChange.add(cell.id);
+            }
+
+        });
+    });
+
+    toChange.forEach(id => {
+        let split = id.split(".");
+        let x = parseInt(split[0]);
+        let y = parseInt(split[1]);
+        toggleCellState(grid[x][y]);
     });
 }
 
 // helper function for getting the neighbors surrounding a cell
 function getNeighbors(cell) {
-    let split = cell.id.split(".");
-    let x = parseInt(split[0]);
-    let y = parseInt(split[1]);
+    let spl = cell.id.split(".");
+    let x = parseInt(spl[0]);
+    let y = parseInt(spl[1]);
 
     let neighbors = 0;
 
-    // TODO: check all neighbors and add to counts
-
+    if(liveCells.has((x-1) + "." + (y-1))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x) + "." + (y-1))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x+1) + "." + (y-1))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x-1) + "." + (y))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x+1) + "." + (y))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x-1) + "." + (y+1))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x) + "." + (y+1))) {
+        neighbors ++;
+    }
+    if(liveCells.has((x+1) + "." + (y+1))) {
+        neighbors ++;
+    }
     return neighbors;
 }

@@ -4,12 +4,6 @@ body {
     height: 100%;
 }
 
-#run-button {
-    color: cornflowerblue;
-    background-color: white;
-    border-style: solid;
-}
-
 #grid-container {
     width: 95vw;
     height: 95vh;
@@ -19,8 +13,8 @@ body {
 
     margin: 10px;
 
-    /* border-color: red;
-    border-style: solid; */
+    border-color: red;
+    border-style: solid;
 }
 
 .grid-row {
