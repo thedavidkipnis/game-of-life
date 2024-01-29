@@ -59,9 +59,7 @@ function randomizeGrid() {
     grid.forEach(row => {
         row.forEach(cell => {
             if(Math.floor(Math.random() * 2) == 1) {
-                cell.className = "dead-cell";
-            } else {
-                cell.className = "live-cell";
+                toggleCellState(cell);
             }
         })
     });
