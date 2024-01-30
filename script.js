@@ -5,11 +5,11 @@ var gridActive = false;
 var runningIntervalID = null;
 
 function main() {
-    genGrid(3,3);
+    genGrid();
 }
 
 // generates grid divs and populates grid array
-function genGrid(rows, cols) {
+function genGrid() {
 
     let screenHeight = screen.height;
     let screenWidth = screen.width;
@@ -24,8 +24,8 @@ function genGrid(rows, cols) {
             var cell = document.createElement("div");
             cell.className = "dead-cell";
             cell.id = i + "." + j;
-            cell.style.animation = 'fade 0.5s 1';
-            cell.style.animationDelay = (0.02 * (j + i)).toString() + 's';
+            // cell.style.animation = 'fade 0.1s 1';
+            // cell.style.animationDelay = (0.02 * (j + i)).toString() + 's';
             cell.onclick = function(cellElement) {
                 toggleCellState(cellElement.currentTarget);
             }

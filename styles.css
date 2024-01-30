@@ -1,19 +1,24 @@
-
-body {
+/* body {
     width: 100%;
     height: 100%;
+
+} */
+
+#screen-container {
+    display: inline-block;
+    text-align: center;
 }
 
 #grid-container {
-    width: 95vw;
-    height: 95vh;
+    width: 95%;
+    height: 100%;
 
     position: fixed;
     display: flexbox;
 
-    margin: 10px;
+    /* margin: 10px; */
 
-    border-color: red;
+    border-color: green;
     border-style: solid;
 }
 
@@ -26,6 +31,18 @@ body {
 
     /* border-color: red;
     border-style: solid; */
+}
+
+#sidebar-container {
+    display: block;
+    position: relative;
+    float: right;
+
+    border-color: red;
+    border-style: solid;
+
+    width: 5%;
+    height: 100%;
 }
 
 .live-cell {
