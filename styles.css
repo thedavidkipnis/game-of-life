@@ -1,36 +1,20 @@
-/* body {
-    width: 100%;
-    height: 100%;
+body {
+    padding: 0;    
+    margin: 0;
+    overflow: hidden;
 
-} */
-
-#screen-container {
-    display: inline-block;
-    text-align: center;
 }
 
 #grid-container {
     width: 95%;
-    height: 100%;
+    height: 100vh;
 
     position: fixed;
     display: flexbox;
 
-    /* margin: 10px; */
 
     border-color: green;
     border-style: solid;
-}
-
-.grid-row {
-
-    width: 100%;
-    height: 20px;
-    display: flex;
-    margin-bottom: 10px;
-
-    /* border-color: red;
-    border-style: solid; */
 }
 
 #sidebar-container {
@@ -42,7 +26,16 @@
     border-style: solid;
 
     width: 5%;
-    height: 100%;
+    height: 100vh;
+}
+
+.grid-row {
+
+    width: 100%;
+    height: 20px;
+    display: flex;
+    margin-bottom: 10px;
+
 }
 
 .live-cell {
