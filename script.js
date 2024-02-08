@@ -1,7 +1,6 @@
 var grid = [];
 var liveCells = new Set();
 
-var gridActive = false;
 var runningIntervalID = null;
 
 function main() {
@@ -63,6 +62,17 @@ function randomizeGrid() {
             }
         })
     });
+}
+
+function clearGrid() {
+    liveCells.clear();
+    clearInterval(runningIntervalID);
+    runningIntervalID = null;
+    grid.forEach(row=> {
+        row.forEach(cell => {
+            cell.className = "dead-cell";
+        })
+    })
 }
 
 // function that starts and stops the grid's refreshing
