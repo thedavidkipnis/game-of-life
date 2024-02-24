@@ -6,7 +6,7 @@ body {
 }
 
 #grid-container {
-    width: 95%;
+    width: 90%;
     height: 100vh;
 
     position: fixed;
@@ -22,11 +22,24 @@ body {
     position: relative;
     float: right;
 
+    width: 10%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-container-vertical-spacer {
+    height: 33%;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+
     border-color: red;
     border-style: solid;
-
-    width: 5%;
-    height: 100vh;
 }
 
 .grid-row {
