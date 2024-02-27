@@ -79,6 +79,10 @@ function clearGrid() {
 function runGrid() {
     if(runningIntervalID == null) {
         runningIntervalID = setInterval(updateFrame, 100);
+
+        // setting run button text
+        document.getElementById("run-button").innerHTML = "STOP";
+
         return;
     }
     clearInterval(runningIntervalID);
@@ -91,6 +95,10 @@ function updateFrame() {
     if(liveCells.size < 1) {
         clearInterval(runningIntervalID);
         runningIntervalID = null;
+
+        // resetting run button text
+        document.getElementById("run-button").innerHTML = "RUN";
+
         return;
     }
 

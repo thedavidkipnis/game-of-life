@@ -13,8 +13,8 @@ body {
     display: flexbox;
 
 
-    border-color: green;
-    border-style: solid;
+    /* border-color: green;
+    border-style: solid; */
 }
 
 #sidebar-container {
@@ -34,12 +34,50 @@ body {
     height: 33%;
     width: 100%;
 
+    padding-right: 10px;
+
     justify-content: center;
     align-items: center;
     /* display: flex; */
 
-    border-color: red;
+    /* border-color: red;
+    border-style: solid; */
+}
+
+#sidebar-directory {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar-directory li button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    width: 100%;
+    font-weight: bold;
+
     border-style: solid;
+    border-radius: 0 0 0 10px;
+    background-color: white;
+    border-color: black;
+    color: black;
+
+    font-family:'Courier New', Courier, monospace;
+
+}
+
+#sidebar-directory li button:hover {
+    color: white;
+    background-color: black;
+}
+
+#sidebar-directory li button:active {
+    color: black;
+    background-color: burlywood;
 }
 
 .grid-row {

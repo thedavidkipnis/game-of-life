@@ -12,9 +12,17 @@
     <div id="grid-container"></div>
     <div id="sidebar-container">
         <div class='sidebar-container-vertical-spacer'>
-            <button onclick="runGrid()">RUN</button>
-            <button onclick="randomizeGrid()">RANDOMIZE</button>
-            <button onclick="clearGrid()">CLEAR</button>
+            <ol id="sidebar-directory">
+                <li>
+                    <button id="run-button" onclick="runGrid()">RUN</button>
+                </li>
+                <li>
+                    <button onclick="randomizeGrid()">RANDOMIZE</button>
+                </li>
+                <li>
+                    <button onclick="clearGrid()">CLEAR</button>
+                </li>
+            </ol>
         </div>
     </div>
 </body>
