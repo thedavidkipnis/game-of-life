@@ -68,6 +68,7 @@ function clearGrid() {
     liveCells.clear();
     clearInterval(runningIntervalID);
     runningIntervalID = null;
+    document.getElementById("run-button").innerHTML = "RUN";
     grid.forEach(row=> {
         row.forEach(cell => {
             cell.className = "dead-cell";
@@ -79,9 +80,6 @@ function clearGrid() {
 function runGrid() {
     if(runningIntervalID == null) {
         runningIntervalID = setInterval(updateFrame, 100);
-
-        // setting run button text
-        document.getElementById("run-button").innerHTML = "STOP";
 
         return;
     }
@@ -101,6 +99,9 @@ function updateFrame() {
 
         return;
     }
+
+    // setting run button text
+    document.getElementById("run-button").innerHTML = "STOP";
 
     let toChange = new Set();
     grid.forEach(row => {
