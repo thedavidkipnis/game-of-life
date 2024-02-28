@@ -85,6 +85,8 @@ function runGrid() {
     }
     clearInterval(runningIntervalID);
     runningIntervalID = null;
+    document.getElementById("run-button").innerHTML = "RUN";
+
 }
 
 // updates grid to the next state
