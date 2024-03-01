@@ -3,8 +3,16 @@ var liveCells = new Set();
 
 var runningIntervalID = null;
 
+var mouseDown = false;
+
 function main() {
     genGrid();
+    document.addEventListener("mousedown", function() {
+        mouseDown = true;
+    })
+    document.addEventListener("mouseup", function() {
+        mouseDown = false;    
+    })
 }
 
 // generates grid divs and populates grid array
@@ -27,6 +35,11 @@ function genGrid() {
             // cell.style.animationDelay = (0.02 * (j + i)).toString() + 's';
             cell.onclick = function(cellElement) {
                 toggleCellState(cellElement.currentTarget);
+            }
+            cell.onmouseover = function(cellElement) {
+                if(mouseDown) {
+                    toggleCellState(cellElement.currentTarget);
+                }
             }
 
             row.appendChild(cell);
