@@ -3,6 +3,8 @@ body {
     margin: 0;
     overflow: hidden;
 
+    --transition-time: 0.15s;
+
 }
 
 #grid-container {
@@ -106,6 +108,9 @@ body {
     border-color: black;
     border-width: 2px;
     border-style: solid;
+
+    transition: background-color var(--transition-time), border-color var(--transition-time);
+
 }
 
 .dead-cell {
@@ -117,13 +122,11 @@ body {
     background-color: white;
     color: white;
     
-    border-radius: 5px;
+    border-radius: 50px;
     border-color: gray;
     border-width: 2px;
     border-style: solid;
-}
 
-@keyframes fade {
-    0% { opacity: 0;}
-    100% { opacity: 1;}
+    transition: background-color var(--transition-time), border-color var(--transition-time);
+
 }

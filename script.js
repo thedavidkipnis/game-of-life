@@ -18,10 +18,10 @@ function main() {
 // generates grid divs and populates grid array
 function genGrid() {
 
-    let screenHeight = screen.height;
-    let screenWidth = screen.width;
+    let screenHeight = visualViewport.height;
+    let screenWidth = visualViewport.width;
 
-    for (var i = 0; i < Math.floor(screenHeight/35); i++) {
+    for (var i = 0; i < Math.ceil(screenHeight/31); i++) {
         var row = document.createElement("div");
         row.className = "grid-row";
 
@@ -31,8 +31,7 @@ function genGrid() {
             var cell = document.createElement("div");
             cell.className = "dead-cell";
             cell.id = i + "." + j;
-            // cell.style.animation = 'fade 0.1s 1';
-            // cell.style.animationDelay = (0.02 * (j + i)).toString() + 's';
+
             cell.onclick = function(cellElement) {
                 toggleCellState(cellElement.currentTarget);
             }
